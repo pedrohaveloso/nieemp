@@ -1,0 +1,31 @@
+<!--
+    @component
+
+    # Layout Campus Unimar.
+
+    Layout com um fundo do campus da Unimar, fundo borrado em 90%.
+
+    ### Como usar:
+
+    ```svelte
+    <script lang="ts">
+        import LayoutCampusUnimar from '@components/layouts/LayoutCampusUnimar.svelte';
+    </script>
+
+    <LayoutCampusUnimar>
+        <h1>Olá, Mundo.</h1>
+    </LayoutCampusUnimar>
+    ```
+-->
+
+<script lang="ts">
+    import { images } from "../../utils/images";
+</script>
+
+<div style="background-image: url('{images.photos.campusUnimar}')">
+    <div
+        class="flex flex-col justify-between w-full h-screen items-center bg-white bg-opacity-90"
+    >
+        <slot />
+    </div>
+</div>

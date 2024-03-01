@@ -13,5 +13,10 @@ export default defineConfig({
             refresh: true,
         }),
     ],
+    resolve: {
+        alias: {
+            '$components': '/resources/views/components',
+        },
+    },
 });
 

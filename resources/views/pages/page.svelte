@@ -1,4 +1,6 @@
 <script lang="ts">
+    import LayoutCampusUnimar from "$components/layouts/LayoutCampusUnimar.svelte";
+
     import { images } from "../utils/images";
 
     const currentYear = new Date().getFullYear();
@@ -10,9 +12,11 @@
     };
 </script>
 
-<div class="bg-[url('{images.photos.campusUnimar}')]">
+<LayoutCampusUnimar></LayoutCampusUnimar>
+
+<div style="background-image: url('{images.photos.campusUnimar}')">
     <div
-        class="flex flex-col justify-between w-full h-screen items-center bg-white bg-opacity-85"
+        class="flex flex-col justify-between w-full h-screen items-center bg-white bg-opacity-90"
     >
         <header
             class="flex flex-col sm:flex-row gap-4 items-center justify-between p-5 w-full"
