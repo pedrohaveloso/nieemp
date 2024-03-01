@@ -1,9 +1,5 @@
 <script lang="ts">
-    import { images } from "../../utils/images";
+    import LayoutCampusUnimar from "$components/layouts/LayoutCampusUnimar.svelte";
 </script>
 
-<div style="background-image: url('{images.photos.campusUnimar}')">
-    <div
-        class="flex flex-col justify-between w-full h-screen items-center bg-white bg-opacity-90"
-    ></div>
-</div>
+<LayoutCampusUnimar></LayoutCampusUnimar>

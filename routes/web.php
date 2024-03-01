@@ -1,7 +1,8 @@
 <?php
 
 use App\Http\Controllers\IndexController;
-use App\Http\Controllers\Login\LoginController;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\StudentController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,5 +22,6 @@ Route::prefix('login')
     ->group(
         function () {
             Route::get('/', [LoginController::class, 'index']);
+            Route::get('/student', [StudentController::class, 'login']);
         }
     );
