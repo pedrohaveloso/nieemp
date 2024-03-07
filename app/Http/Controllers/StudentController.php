@@ -9,8 +9,6 @@ class StudentController extends Controller
 {
     public function login(): RedirectResponse
     {
-            
-
         return Redirect::to('/home');
     }
 }

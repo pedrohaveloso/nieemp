@@ -1,7 +1,7 @@
 <!--
     @component
 
-    # Layout Campus Unimar.
+    ## CampusLayoutComponent.
 
     Layout com um fundo do campus da Unimar, fundo borrado em 90%.
 
@@ -9,12 +9,12 @@
 
     ```svelte
     <script lang="ts">
-        import LayoutCampusUnimar from '@components/layouts/LayoutCampusUnimar.svelte';
+        import CampusLayoutComponent from '@components/layouts/CampusLayoutComponent.svelte';
     </script>
 
-    <LayoutCampusUnimar>
+    <CampusLayoutComponent>
         <h1>Olá, Mundo.</h1>
-    </LayoutCampusUnimar>
+    </CampusLayoutComponent>
     ```
 -->
 

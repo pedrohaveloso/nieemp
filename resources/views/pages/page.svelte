@@ -1,17 +1,11 @@
 <script lang="ts">
-    import LayoutCampusUnimar from "$components/layouts/LayoutCampusUnimar.svelte";
+    import FooterComponent from "$components/FooterComponent.svelte";
+    import PrimaryButtonComponent from "$components/buttons/PrimaryButtonComponent.svelte";
+    import CampusLayoutComponent from "$components/layouts/CampusLayoutComponent.svelte";
     import { images } from "../utils/images";
-
-    const currentYear = new Date().getFullYear();
-
-    const unimarContacts = {
-        mail: "falecom@unimar.br",
-        phone: "+551421054000",
-        formatedPhone: "+55 (14) 2105-4000",
-    };
 </script>
 
-<LayoutCampusUnimar>
+<CampusLayoutComponent>
     <header
         class="flex flex-col sm:flex-row gap-4 items-center justify-between p-5 w-full"
     >
@@ -26,10 +20,7 @@
         <menu class="flex gap-1 sm:gap-3 w-full justify-end">
             <li class="w-full sm:w-fit">
                 <a class="w-full sm:w-fit" href="/register">
-                    <button
-                        class="text-sm w-full sm:w-fit sm:text-base flex items-center justify-center gap-3 px-4 sm:px-8 py-4 text-white font-medium bg-dark-blue rounded-xl hover:opacity-90 transition-all duration-500"
-                        type="button"
-                    >
+                    <PrimaryButtonComponent class="bg-blue">
                         Registrar-se
 
                         <img
@@ -37,16 +28,13 @@
                             src={images.icons.register}
                             alt="Ícone Registrar-se"
                         />
-                    </button>
+                    </PrimaryButtonComponent>
                 </a>
             </li>
 
             <li class="w-full sm:w-fit">
                 <a class="w-full sm:w-fit" href="/login">
-                    <button
-                        class="text-sm w-full sm:w-fit sm:text-base flex items-center justify-center gap-3 px-4 sm:px-8 py-4 text-white font-medium bg-black rounded-xl hover:opacity-90 transition-all duration-500"
-                        type="button"
-                    >
+                    <PrimaryButtonComponent class="bg-black">
                         Entrar
 
                         <img
@@ -54,7 +42,7 @@
                             src={images.icons.login}
                             alt="Ícone Entrar"
                         />
-                    </button>
+                    </PrimaryButtonComponent>
                 </a>
             </li>
         </menu>
@@ -70,47 +58,5 @@
         </a>
     </main>
 
-    <footer
-        class="text-xs md:text-sm gap-2 lg:text-base flex flex-col sm:flex-row items-start sm:items-center justify-between p-5 font-bold w-full"
-    >
-        <a
-            class="hover:opacity-90 transition-all duration-500 text-dark-blue"
-            target="_blank"
-            href="https://unimar.br/"
-        >
-            Universidade de Marília | {currentYear}
-        </a>
-
-        <address
-            class="flex flex-col sm:flex-row gap-1 sm:gap-4 md:gap-6 not-italic"
-        >
-            Fale conosco:
-
-            <a
-                class="flex gap-1 items-center underline hover:opacity-90 transition-all duration-500"
-                href="mailto:{unimarContacts.mail}"
-            >
-                <img
-                    class="h-3 md:h-4"
-                    src={images.icons.mail}
-                    alt="Ícone E-mail"
-                />
-
-                {unimarContacts.mail}
-            </a>
-
-            <a
-                class="flex gap-1 items-center underline hover:opacity-90 transition-all duration-500"
-                href="tel:{unimarContacts.phone}"
-            >
-                <img
-                    class="h-3 md:h-4"
-                    src={images.icons.call}
-                    alt="Ícone Telefone"
-                />
-
-                {unimarContacts.formatedPhone}
-            </a>
-        </address>
-    </footer>
-</LayoutCampusUnimar>
+    <FooterComponent />
+</CampusLayoutComponent>

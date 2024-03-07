@@ -5,6 +5,7 @@
 @tailwind utilities;
 
 * {
+    color: #262626;
     font-family: "Montserrat", Arial, Helvetica, sans-serif;
 }
 

@@ -5,7 +5,9 @@ export const images = {
 
     logos: {
         unimar: "/assets/images/logos/unimar_default_logo.svg",
+        unimarIcon: "/assets/images/logos/unimar_icon_logo.svg",
         nieemp: "/assets/images/logos/nieemp_default_logo.svg",
+        nieempName: "/assets/images/logos/nieemp_name_logo.svg",
     },
 
     icons: {
