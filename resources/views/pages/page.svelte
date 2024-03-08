@@ -20,12 +20,12 @@
         <menu class="flex gap-1 sm:gap-3 w-full justify-end">
             <li class="w-full sm:w-fit">
                 <a class="w-full sm:w-fit" href="/register">
-                    <PrimaryButtonComponent class="bg-blue">
+                    <PrimaryButtonComponent class="bg-dark-blue">
                         Registrar-se
 
                         <img
                             class="h-3 sm:h-5"
-                            src={images.icons.register}
+                            src={images.icons.whiteRegister}
                             alt="Ícone Registrar-se"
                         />
                     </PrimaryButtonComponent>
@@ -39,7 +39,7 @@
 
                         <img
                             class="h-3 sm:h-5"
-                            src={images.icons.login}
+                            src={images.icons.whiteLogin}
                             alt="Ícone Entrar"
                         />
                     </PrimaryButtonComponent>

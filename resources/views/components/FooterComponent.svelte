@@ -50,7 +50,7 @@
         >
             <img
                 class="h-3 md:h-4"
-                src={images.icons.mail}
+                src={images.icons.darkMail}
                 alt="Ícone E-mail"
             />
 
@@ -63,7 +63,7 @@
         >
             <img
                 class="h-3 md:h-4"
-                src={images.icons.call}
+                src={images.icons.darkCall}
                 alt="Ícone Telefone"
             />
 

@@ -9,11 +9,13 @@ export default defineConfig({
         svelte({
             preprocess: [sveltePreprocess({ typescript: true })],
         }),
+
         laravel({
             input: ["resources/css/app.css", "resources/js/app.js"],
             refresh: true,
         }),
     ],
+
     resolve: {
         alias: {
             $components: path.resolve('./resources/views/components'),

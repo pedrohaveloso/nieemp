@@ -11,9 +11,9 @@ export const images = {
     },
 
     icons: {
-        register: "/assets/images/icons/register_icon.svg",
-        login: "/assets/images/icons/login_icon.svg",
-        call: "/assets/images/icons/call_icon.svg",
-        mail: "/assets/images/icons/mail_icon.svg",
+        whiteRegister: "/assets/images/icons/white_register_icon.svg",
+        whiteLogin: "/assets/images/icons/white_login_icon.svg",
+        darkCall: "/assets/images/icons/dark_call_icon.svg",
+        darkMail: "/assets/images/icons/dark_mail_icon.svg",
     },
 };
