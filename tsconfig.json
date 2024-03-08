@@ -1,9 +1,0 @@
-{
-    "compilerOptions": {
-        "paths": {
-            "$components/*": [
-                "./resources/views/components/*"
-            ],
-        }
-    }
-}
