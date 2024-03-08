@@ -37,3 +37,5 @@ npm-debug.log
 
 # ElixirLS VSCode extension.
 /.elixir_ls
+
+/config/dev.exs
