@@ -86,6 +86,8 @@ defmodule NieempWeb do
       # Core UI components and translation
       import NieempWeb.CoreComponents
       import NieempWeb.Gettext
+      # UI components
+      import NieempWeb.ButtonComponents
 
       # Shortcut for generating JS commands
       alias Phoenix.LiveView.JS

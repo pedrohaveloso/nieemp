@@ -3,8 +3,9 @@ import Config
 # Configure your database
 config :nieemp, Nieemp.Repo,
   username: "postgres",
-  password: "postgres",
+  password: "root",
   hostname: "localhost",
+  port: "7993",
   database: "nieemp_dev",
   stacktrace: true,
   show_sensitive_data_on_connection_error: true,
