@@ -1,0 +1,123 @@
+<header class="flex flex-col sm:flex-row gap-4 items-center justify-between p-5 w-full">
+  <a href="/" class="w-fit">
+    <img
+      class="h-16 hover:opacity-90 transition-all duration-500"
+      src="/images/logos/nieemp_logo.svg"
+      alt="Nieemp"
+    />
+  </a>
+
+  <a href="https://unimar.br/" target="_blank" class="w-fit">
+    <img
+      class="h-12 hover:opacity-90 transition-all duration-500"
+      src="/images/logos/unimar_logo.svg"
+      alt="Unimar"
+    />
+  </a>
+</header>
+
+<main>
+  <article class="flex flex-col gap-4 justify-center items-center" id="login-options">
+    <h1 class="font-medium text-lg">Escolha seu tipo de usuário:</h1>
+
+    <menu class="flex gap-2">
+      <li>
+        <.primary_button
+          class="bg-ni-blue text-ni-white"
+          onclick="LoginFormControl.openLoginForm(UsersType.student)"
+        >
+          Aluno <.icon name="hero-academic-cap" />
+        </.primary_button>
+      </li>
+
+      <li>
+        <.primary_button
+          class="bg-ni-blue text-ni-white"
+          onclick="LoginFormControl.openLoginForm(UsersType.egress)"
+        >
+          Egresso <.icon name="hero-arrow-left-start-on-rectangle" />
+        </.primary_button>
+      </li>
+
+      <li>
+        <.primary_button
+          class="bg-ni-blue text-ni-white"
+          onclick="LoginFormControl.openLoginForm(UsersType.enterprise)"
+        >
+          Empresa <.icon name="hero-building-office" />
+        </.primary_button>
+      </li>
+
+      <li>
+        <.primary_button
+          class="bg-ni-blue text-ni-white"
+          onclick="LoginFormControl.openLoginForm(UsersType.admin)"
+        >
+          Administrador <.icon name="hero-briefcase" />
+        </.primary_button>
+      </li>
+    </menu>
+  </article>
+
+  <article class="hidden" id="student-login-form">
+    <form action="">
+      <label for="student-cpf">
+        <%!-- CPF <.live_component module={NieempWeb.Inputs.CpfInput} id="a" name="hello" /> --%>
+        <.live_component module={NieempWeb.HeroComponent} id={Enum.random(1..10000)} />
+      </label>
+    </form>
+  </article>
+</main>
+
+<.footer />
+
+<script>
+  /**
+   * @enum {string}
+   */
+  class UsersType {
+    static student = 'student'
+    static egress = 'egress'
+    static enterprise = 'enterprise'
+    static admin = 'admin'
+  }
+
+  class LoginFormControl {
+    /** 
+     * @param {string} userType 
+     */
+    static openLoginForm(userType) {
+      this._getLoginOptionsElement().classList.add('hidden')
+      this._getLoginOptionsElement().classList.remove('flex')
+
+      this._getLoginFormAreaElement(userType).classList.add('flex')
+      this._getLoginFormAreaElement(userType).classList.remove('hidden')
+    }
+
+    /**
+     * @param {string} userType 
+     */
+    static closeLoginForm(userType) {
+      this._getLoginFormAreaElement(userType).classList.add('hidden')
+      this._getLoginFormAreaElement(userType).classList.remove('flex')
+
+      this._getLoginOptionsElement().classList.add('hidden')
+      this._getLoginOptionsElement().classList.remove('flex')
+    }
+
+    /** 
+     * @return {HTMLArticleElement} 
+     */
+    static _getLoginOptionsElement() {
+      return document.querySelector('#login-options')
+    }
+
+    /** 
+     * @param {string} userType
+     * @return {HTMLArticleElement} 
+     */
+    static _getLoginFormAreaElement(userType) {
+      return document.querySelector(`#${userType}-login-form`)
+    }
+  }
+</script>
