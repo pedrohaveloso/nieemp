@@ -62,8 +62,7 @@
   <article class="hidden" id="student-login-form">
     <form action="">
       <label for="student-cpf">
-        <%!-- CPF <.live_component module={NieempWeb.Inputs.CpfInput} id="a" name="hello" /> --%>
-        <.live_component module={NieempWeb.HeroComponent} id={Enum.random(1..10000)} />
+        <%!-- CPF <.live_component module={NieempWeb.Inputs.CpfInput} id="myid" name="ola" /> --%>
       </label>
     </form>
   </article>
@@ -72,52 +71,50 @@
 <.footer />
 
 <script>
-  /**
-   * @enum {string}
+  /** @typedef {string} UserType */
+
+  /** 
+   * @enum {UserType}
    */
-  class UsersType {
-    static student = 'student'
-    static egress = 'egress'
-    static enterprise = 'enterprise'
-    static admin = 'admin'
+  const usersTypes = {
+     student : 'student',
+     egress : 'egress',
+     enterprise : 'enterprise',
+     admin : 'admin',
   }
 
-  class LoginFormControl {
-    /** 
-     * @param {string} userType 
-     */
-    static openLoginForm(userType) {
-      this._getLoginOptionsElement().classList.add('hidden')
-      this._getLoginOptionsElement().classList.remove('flex')
+   /** 
+    * @type {HTMLArticleElement} 
+    */
+   const _loginOptionsElement() = document.querySelector('#login-options')
 
-      this._getLoginFormAreaElement(userType).classList.add('flex')
-      this._getLoginFormAreaElement(userType).classList.remove('hidden')
-    }
+   /** 
+    * @param {UserType} userType
+    * @return {HTMLArticleElement} 
+    */
+   function _getLoginFormAreaElement(userType) {
+     return document.querySelector(`#${userType}-login-form`)
+   }
 
-    /**
-     * @param {string} userType 
-     */
-    static closeLoginForm(userType) {
-      this._getLoginFormAreaElement(userType).classList.add('hidden')
-      this._getLoginFormAreaElement(userType).classList.remove('flex')
+   /** 
+    * @param {string} userType 
+    */
+   function openLoginForm(userType) {
+     this._loginOptionsElement.classList.add('hidden')
+     this._loginOptionsElement.classList.remove('flex')
 
-      this._getLoginOptionsElement().classList.add('hidden')
-      this._getLoginOptionsElement().classList.remove('flex')
-    }
+     this._getLoginFormAreaElement(userType).classList.add('flex')
+     this._getLoginFormAreaElement(userType).classList.remove('hidden')
+   }
 
-    /** 
-     * @return {HTMLArticleElement} 
-     */
-    static _getLoginOptionsElement() {
-      return document.querySelector('#login-options')
-    }
+   /**
+    * @param {string} userType 
+    */
+   function closeLoginForm(userType) {
+     this._getLoginFormAreaElement(userType).classList.add('hidden')
+     this._getLoginFormAreaElement(userType).classList.remove('flex')
 
-    /** 
-     * @param {string} userType
-     * @return {HTMLArticleElement} 
-     */
-    static _getLoginFormAreaElement(userType) {
-      return document.querySelector(`#${userType}-login-form`)
-    }
-  }
+     this._loginOptionsElement.classList.add('hidden')
+     this._loginOptionsElement.classList.remove('flex')
+   }
 </script>
