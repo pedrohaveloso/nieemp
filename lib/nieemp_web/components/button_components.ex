@@ -22,8 +22,8 @@ defmodule NieempWeb.ButtonComponents do
     ~H"""
     <button
       class={[
-        @class,
-        "text-sm sm:text-base flex items-center justify-center gap-3 px-4 sm:px-8 py-4 text-white font-medium rounded-xl hover:opacity-90 transition-all duration-500"
+        "text-sm sm:text-base flex items-center justify-center gap-3 px-4 sm:px-8 py-4 text-white font-medium rounded-xl hover:opacity-90 transition-all duration-500",
+        @class
       ]}
       type="button"
       onclick={@onclick}

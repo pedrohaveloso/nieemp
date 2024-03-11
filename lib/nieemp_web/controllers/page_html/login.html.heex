@@ -1,120 +1,114 @@
-<header class="flex flex-col sm:flex-row gap-4 items-center justify-between p-5 w-full">
-  <a href="/" class="w-fit">
-    <img
-      class="h-16 hover:opacity-90 transition-all duration-500"
-      src="/images/logos/nieemp_logo.svg"
-      alt="Nieemp"
-    />
-  </a>
-
-  <a href="https://unimar.br/" target="_blank" class="w-fit">
-    <img
-      class="h-12 hover:opacity-90 transition-all duration-500"
-      src="/images/logos/unimar_logo.svg"
-      alt="Unimar"
-    />
-  </a>
-</header>
-
-<main>
-  <article class="flex flex-col gap-4 justify-center items-center" id="login-options">
-    <h1 class="font-medium text-lg">Escolha seu tipo de usuário:</h1>
-
-    <menu class="flex gap-2">
-      <li>
-        <.primary_button
-          class="bg-ni-blue text-ni-white"
-          onclick="LoginFormControl.openLoginForm(UsersType.student)"
-        >
-          Aluno <.icon name="hero-academic-cap" />
-        </.primary_button>
-      </li>
-
-      <li>
-        <.primary_button
-          class="bg-ni-blue text-ni-white"
-          onclick="LoginFormControl.openLoginForm(UsersType.egress)"
-        >
-          Egresso <.icon name="hero-arrow-left-start-on-rectangle" />
-        </.primary_button>
-      </li>
-
-      <li>
-        <.primary_button
-          class="bg-ni-blue text-ni-white"
-          onclick="LoginFormControl.openLoginForm(UsersType.enterprise)"
-        >
-          Empresa <.icon name="hero-building-office" />
-        </.primary_button>
-      </li>
-
-      <li>
-        <.primary_button
-          class="bg-ni-blue text-ni-white"
-          onclick="LoginFormControl.openLoginForm(UsersType.admin)"
-        >
-          Administrador <.icon name="hero-briefcase" />
-        </.primary_button>
-      </li>
-    </menu>
-  </article>
-
-  <article class="hidden" id="student-login-form">
-    <form action="">
-      <label for="student-cpf">
-        <%!-- CPF <.live_component module={NieempWeb.Inputs.CpfInput} id="myid" name="ola" /> --%>
-      </label>
-    </form>
-  </article>
-</main>
-
-<.footer />
-
-<script>
+<script defer type="text/javascript">
   /** @typedef {string} UserType */
 
   /** 
    * @enum {UserType}
    */
   const usersTypes = {
-     student : 'student',
-     egress : 'egress',
-     enterprise : 'enterprise',
-     admin : 'admin',
+    student: 'student',
+    egress: 'egress',
+    enterprise: 'enterprise',
+    admin: 'admin',
   }
 
-   /** 
-    * @type {HTMLArticleElement} 
-    */
-   const _loginOptionsElement() = document.querySelector('#login-options')
+  /** 
+   * @return {HTMLArticleElement} 
+   */
+  function _getloginOptionsElement() {
+    return document.querySelector('#login-options')
+  }
 
-   /** 
-    * @param {UserType} userType
-    * @return {HTMLArticleElement} 
-    */
-   function _getLoginFormAreaElement(userType) {
-     return document.querySelector(`#${userType}-login-form`)
-   }
+  /** 
+   * @param {UserType} userType
+   * @return {HTMLArticleElement} 
+   */
+  function _getLoginFormAreaElement(userType) {
+    return document.querySelector(`#${userType}-login-form`)
+  }
 
-   /** 
-    * @param {string} userType 
-    */
-   function openLoginForm(userType) {
-     this._loginOptionsElement.classList.add('hidden')
-     this._loginOptionsElement.classList.remove('flex')
+  /** 
+   * @param {string} userType 
+   * @return {void}
+   */
+  function openLoginForm(userType) {
+    _getloginOptionsElement().classList.add('hidden')
+    _getloginOptionsElement().classList.remove('flex')
 
-     this._getLoginFormAreaElement(userType).classList.add('flex')
-     this._getLoginFormAreaElement(userType).classList.remove('hidden')
-   }
+    _getLoginFormAreaElement(userType).classList.add('flex')
+    _getLoginFormAreaElement(userType).classList.remove('hidden')
+  }
 
-   /**
-    * @param {string} userType 
-    */
-   function closeLoginForm(userType) {
-     this._getLoginFormAreaElement(userType).classList.add('hidden')
-     this._getLoginFormAreaElement(userType).classList.remove('flex')
+  /**
+   * @param {string} userType 
+   * @return {void}
+   */
+  function closeLoginForm(userType) {
+    _getLoginFormAreaElement(userType).classList.add('hidden')
+    _getLoginFormAreaElement(userType).classList.remove('flex')
 
-     this._loginOptionsElement.classList.add('hidden')
-     this._loginOptionsElement.classList.remove('flex')
-   }
+    _getloginOptionsElement().classList.add('hidden')
+    _getloginOptionsElement().classList.remove('flex')
+  }
 </script>
+
+<header class="flex flex-row gap-4 items-center justify-between p-5 w-full">
+  <a href="/" class="w-fit">
+    <img class="h-16 hover:opacity-90 transition-all duration-500" src="/images/logos/nieemp_logo.svg" alt="Nieemp" />
+  </a>
+
+  <a href="https://unimar.br/" target="_blank" class="w-fit">
+    <img class="h-12 hover:opacity-90 transition-all duration-500" src="/images/logos/unimar_logo.svg" alt="Unimar" />
+  </a>
+</header>
+
+<main>
+  <article class="flex flex-col gap-8 justify-center items-center" id="login-options">
+    <h1 class="font-medium text-xl sm:text-2xl">Escolha seu tipo de usuário:</h1>
+
+    <menu class="flex flex-col md:flex-row gap-2 w-full">
+      <li>
+        <.primary_button class="bg-ni-blue text-ni-white w-full md:w-fit" onclick="openLoginForm(usersTypes.student)">
+          Aluno
+          <.icon name="hero-academic-cap" />
+        </.primary_button>
+      </li>
+
+      <li>
+        <.primary_button class="bg-ni-blue text-ni-white w-full md:w-fit" onclick="openLoginForm(usersTypes.egress)">
+          Egresso
+          <.icon name="hero-arrow-left-start-on-rectangle" />
+        </.primary_button>
+      </li>
+
+      <li>
+        <.primary_button class="bg-ni-blue text-ni-white w-full md:w-fit"
+          onclick="openLoginForm(usersTypes.enterprise)">
+          Empresa
+          <.icon name="hero-building-office" />
+        </.primary_button>
+      </li>
+
+      <li>
+        <.primary_button class="bg-ni-blue text-ni-white w-full md:w-fit" onclick="openLoginForm(usersTypes.admin)">
+          Administrador
+          <.icon name="hero-briefcase" />
+        </.primary_button>
+      </li>
+    </menu>
+  </article>
+
+  <article class="hidden gap-2" id="student-login-form">
+    <form class="bg-ni-white p-2 rounded-xl" action="">
+      <label for="student-cpf">
+        CPF
+        <input type="text" id="student-cpf-input" phx-hook="cpf-input" />
+      </label>
+    </form>
+
+    <.primary_button class="bg-ni-black text-ni-white !p-2 !h-fit !w-fit">
+      <.icon name="hero-x-mark" />
+    </.primary_button>
+  </article>
+</main>
+
+<.footer />

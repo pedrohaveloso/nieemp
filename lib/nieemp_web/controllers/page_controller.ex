@@ -6,6 +6,11 @@ defmodule NieempWeb.PageController do
   end
 
   def login(conn, _params) do
-    render(conn, :login, layout: {NieempWeb.Layouts, :campus})
+    render(
+      conn,
+      :login,
+      layout: {NieempWeb.Layouts, :campus},
+      page_title: ~c"Entrar"
+    )
   end
 end
