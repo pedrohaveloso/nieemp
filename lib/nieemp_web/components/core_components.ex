@@ -53,7 +53,7 @@ defmodule NieempWeb.CoreComponents do
       })
 
     ~H"""
-    <footer class="text-xs md:text-sm gap-2 lg:text-base flex flex-col sm:flex-row items-start sm:items-center justify-between p-5 w-full">
+    <footer class="text-xs md:text-sm gap-2 lg:text-base flex flex-col sm:flex-row items-start sm:items-center justify-between p-5 w-full bg-ni-white bg-opacity-80">
       <a
         class="hover:opacity-90 transition-all duration-500 text-dark-blue"
         target="_blank"
@@ -65,18 +65,18 @@ defmodule NieempWeb.CoreComponents do
       <address class="flex flex-col sm:flex-row gap-1 sm:gap-4 md:gap-6 not-italic">
         <span class="hidden sm:flex">Fale conosco:</span>
         <a
-          class="flex items-center underline hover:opacity-90 transition-all duration-500"
+          class="flex gap-2 items-center underline hover:opacity-90 transition-all duration-500"
           href={"mailto:" <> @unimar_contacts[:mail]}
         >
-          <.icon name="hero-chat-bubble-left-solid" class="h-3 md:h-4" />
+          <.icon name="hero-chat-bubble-left-solid" class="h-4 md:h-6" />
           <%= @unimar_contacts[:mail] %>
         </a>
 
         <a
-          class="flex items-center underline hover:opacity-90 transition-all duration-500"
+          class="flex gap-2 items-center underline hover:opacity-90 transition-all duration-500"
           href={"tel:" <> @unimar_contacts.phone}
         >
-          <.icon name="hero-phone-solid" class="h-3 md:h-4" />
+          <.icon name="hero-phone-solid" class="h-4 md:h-6" />
           <%= @unimar_contacts.formated_phone %>
         </a>
       </address>

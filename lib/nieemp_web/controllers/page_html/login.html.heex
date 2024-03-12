@@ -53,11 +53,19 @@
 
 <header class="flex flex-row gap-4 items-center justify-between p-5 w-full">
   <a href="/" class="w-fit">
-    <img class="h-16 hover:opacity-90 transition-all duration-500" src="/images/logos/nieemp_logo.svg" alt="Nieemp" />
+    <img
+      class="h-16 hover:opacity-90 transition-all duration-500"
+      src="/images/logos/nieemp_logo.svg"
+      alt="Nieemp"
+    />
   </a>
 
   <a href="https://unimar.br/" target="_blank" class="w-fit">
-    <img class="h-12 hover:opacity-90 transition-all duration-500" src="/images/logos/unimar_logo.svg" alt="Unimar" />
+    <img
+      class="h-12 hover:opacity-90 transition-all duration-500"
+      src="/images/logos/unimar_logo.svg"
+      alt="Unimar"
+    />
   </a>
 </header>
 
@@ -67,32 +75,39 @@
 
     <menu class="flex flex-col md:flex-row gap-2 w-full">
       <li>
-        <.primary_button class="bg-ni-blue text-ni-white w-full md:w-fit" onclick="openLoginForm(usersTypes.student)">
-          Aluno
-          <.icon name="hero-academic-cap" />
-        </.primary_button>
+        <.button
+          class="bg-ni-blue text-ni-white w-full md:w-fit"
+          onclick="openLoginForm(usersTypes.student)"
+        >
+          Aluno <.icon name="hero-academic-cap" />
+        </.button>
       </li>
 
       <li>
-        <.primary_button class="bg-ni-blue text-ni-white w-full md:w-fit" onclick="openLoginForm(usersTypes.egress)">
-          Egresso
-          <.icon name="hero-arrow-left-start-on-rectangle" />
-        </.primary_button>
+        <.button
+          class="bg-ni-blue text-ni-white w-full md:w-fit"
+          onclick="openLoginForm(usersTypes.egress)"
+        >
+          Egresso <.icon name="hero-arrow-left-start-on-rectangle" />
+        </.button>
       </li>
 
       <li>
-        <.primary_button class="bg-ni-blue text-ni-white w-full md:w-fit"
-          onclick="openLoginForm(usersTypes.enterprise)">
-          Empresa
-          <.icon name="hero-building-office" />
-        </.primary_button>
+        <.button
+          class="bg-ni-blue text-ni-white w-full md:w-fit"
+          onclick="openLoginForm(usersTypes.enterprise)"
+        >
+          Empresa <.icon name="hero-building-office" />
+        </.button>
       </li>
 
       <li>
-        <.primary_button class="bg-ni-blue text-ni-white w-full md:w-fit" onclick="openLoginForm(usersTypes.admin)">
-          Administrador
-          <.icon name="hero-briefcase" />
-        </.primary_button>
+        <.button
+          class="bg-ni-blue text-ni-white w-full md:w-fit"
+          onclick="openLoginForm(usersTypes.admin)"
+        >
+          Administrador <.icon name="hero-briefcase" />
+        </.button>
       </li>
     </menu>
   </article>
@@ -100,14 +115,13 @@
   <article class="hidden gap-2" id="student-login-form">
     <form class="bg-ni-white p-2 rounded-xl" action="">
       <label for="student-cpf">
-        CPF
-        <input type="text" id="student-cpf-input" phx-hook="cpf-input" />
+        CPF <input type="text" id="student-cpf-input" phx-hook="cpf-input" />
       </label>
     </form>
 
-    <.primary_button class="bg-ni-black text-ni-white !p-2 !h-fit !w-fit">
+    <.button class="bg-ni-black text-ni-white !p-2 !h-fit !w-fit">
       <.icon name="hero-x-mark" />
-    </.primary_button>
+    </.button>
   </article>
 </main>
 

@@ -16,16 +16,17 @@ defmodule NieempWeb.ButtonComponents do
   """
   attr :class, :string, default: nil
   attr :onclick, :string, default: nil
+  attr :type, :string, default: "button"
   slot :inner_block, required: true
 
-  def primary_button(assigns) do
+  def button(assigns) do
     ~H"""
     <button
       class={[
-        "text-sm sm:text-base flex items-center justify-center gap-3 px-4 sm:px-8 py-4 text-white font-medium rounded-xl hover:opacity-90 transition-all duration-500",
+        "text-sm sm:text-base flex items-center justify-center gap-3 px-6 sm:px-8 py-4 text-ni-white font-medium rounded-3xl hover:opacity-90 transition-all duration-500",
         @class
       ]}
-      type="button"
+      type={@type}
       onclick={@onclick}
     >
       <%= render_slot(@inner_block) %>

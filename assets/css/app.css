@@ -6,6 +6,7 @@
 
 * {
     font-family: 'Montserrat';
+    @apply text-ni-black;
 }
 
 html,
