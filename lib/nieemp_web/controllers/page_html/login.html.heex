@@ -51,67 +51,96 @@
   }
 </script>
 
-<header class="flex flex-row gap-4 items-center justify-between p-5 w-full">
-  <a href="/" class="w-fit">
-    <img
-      class="h-16 hover:opacity-90 transition-all duration-500"
-      src="/images/logos/nieemp_logo.svg"
-      alt="Nieemp"
-    />
-  </a>
+<div id="login-page" class="min-h-screen flex flex-col justify-between">
+  <header class="flex flex-col sm:flex-row gap-4 items-center justify-between p-5 w-full bg-ni-white bg-opacity-80">
+    <span class="justify-center sm:justify-start flex gap-2 sm:gap-4 md:gap-6 h-full w-full">
+      <a href="/" class="w-fit h-full flex items-center justify-center">
+        <img
+          class="max-[350px]:h-8 h-12 lg:h-16 w-max hover:opacity-90 transition-all duration-500"
+          src="/images/logos/nieemp_dark_logo.svg"
+          alt="Nieemp"
+        />
+      </a>
 
-  <a href="https://unimar.br/" target="_blank" class="w-fit">
-    <img
-      class="h-12 hover:opacity-90 transition-all duration-500"
-      src="/images/logos/unimar_logo.svg"
-      alt="Unimar"
-    />
-  </a>
-</header>
+      <a
+        href="https://unimar.br/"
+        target="_blank"
+        class="w-fit h-full flex items-center justify-center"
+      >
+        <img
+          class="max-[350px]:h-8 h-10 lg:h-14 w-max hover:opacity-90 transition-all duration-500"
+          src="/images/logos/unimar_logo.svg"
+          alt="Unimar"
+        />
+      </a>
+    </span>
+
+    <span class="flex flex-col lg:flex-row gap-1 lg:gap-6 h-full w-full items-end lg:items-center justify-end">
+      <p class="font-medium hidden pr-2 sm:pl-0 sm:flex">Caso não tenha conta:</p>
+      <a class="w-full sm:w-fit flex justify-center" href="/register">
+        <.button class="bg-ni-black w-full sm:w-fit max-w-80 mx-3 sm:mx-0">
+          Registrar-se <.icon class="text-ni-white" name="hero-pencil-square" />
+        </.button>
+      </a>
+    </span>
+  </header>
+
+  <main class="p-8 justify-center sm:justify-start sm:p-12 flex">
+    <article class="flex flex-col gap-2 sm:gap-6 justify-center" id="login-options">
+      <h1 class="font-bold text-2xl sm:text-3xl">
+        Escolha seu tipo de <strong class="text-ni-blue">usuário</strong>:
+      </h1>
+
+      <menu class="flex flex-wrap gap-2 w-full flex-col sm:flex-row">
+        <li>
+          <.button
+            class="bg-ni-blue text-ni-white w-full md:w-fit"
+            onclick="openLoginForm(usersTypes.student)"
+          >
+            Aluno <.icon class="text-ni-white" name="hero-academic-cap" />
+          </.button>
+        </li>
+
+        <li>
+          <.button
+            class="bg-ni-blue text-ni-white w-full md:w-fit"
+            onclick="openLoginForm(usersTypes.egress)"
+          >
+            Egresso <.icon class="text-ni-white" name="hero-arrow-left-start-on-rectangle" />
+          </.button>
+        </li>
+
+        <li>
+          <.button
+            class="bg-ni-blue text-ni-white w-full md:w-fit"
+            onclick="openLoginForm(usersTypes.enterprise)"
+          >
+            Empresa <.icon class="text-ni-white" name="hero-building-office" />
+          </.button>
+        </li>
+
+        <li>
+          <.button
+            class="bg-ni-blue text-ni-white w-full md:w-fit"
+            onclick="openLoginForm(usersTypes.admin)"
+          >
+            Administrador <.icon class="text-ni-white" name="hero-briefcase" />
+          </.button>
+        </li>
+      </menu>
+    </article>
+  </main>
+
+  <.footer />
+</div>
+
+<img
+  class="opacity-10 sm:opacity-20 md:opacity-30 2xl:opacity-100 h-screen fixed top-0 right-0 -z-10"
+  src="/images/backgrounds/blue_shape.svg"
+  alt=""
+/>
 
 <main>
-  <article class="flex flex-col gap-8 justify-center items-center" id="login-options">
-    <h1 class="font-medium text-xl sm:text-2xl">Escolha seu tipo de usuário:</h1>
-
-    <menu class="flex flex-col md:flex-row gap-2 w-full">
-      <li>
-        <.button
-          class="bg-ni-blue text-ni-white w-full md:w-fit"
-          onclick="openLoginForm(usersTypes.student)"
-        >
-          Aluno <.icon name="hero-academic-cap" />
-        </.button>
-      </li>
-
-      <li>
-        <.button
-          class="bg-ni-blue text-ni-white w-full md:w-fit"
-          onclick="openLoginForm(usersTypes.egress)"
-        >
-          Egresso <.icon name="hero-arrow-left-start-on-rectangle" />
-        </.button>
-      </li>
-
-      <li>
-        <.button
-          class="bg-ni-blue text-ni-white w-full md:w-fit"
-          onclick="openLoginForm(usersTypes.enterprise)"
-        >
-          Empresa <.icon name="hero-building-office" />
-        </.button>
-      </li>
-
-      <li>
-        <.button
-          class="bg-ni-blue text-ni-white w-full md:w-fit"
-          onclick="openLoginForm(usersTypes.admin)"
-        >
-          Administrador <.icon name="hero-briefcase" />
-        </.button>
-      </li>
-    </menu>
-  </article>
-
   <article class="hidden gap-2" id="student-login-form">
     <form class="bg-ni-white p-2 rounded-xl" action="">
       <label for="student-cpf">
@@ -124,5 +153,3 @@
     </.button>
   </article>
 </main>
-
-<.footer />
