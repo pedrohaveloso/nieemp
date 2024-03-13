@@ -4,7 +4,7 @@
   /** 
    * @enum {UserType}
    */
-  const usersTypes = {
+  const userTypes = {
     student: 'student',
     egress: 'egress',
     enterprise: 'enterprise',
@@ -46,8 +46,30 @@
     _getLoginFormAreaElement(userType).classList.add('hidden')
     _getLoginFormAreaElement(userType).classList.remove('flex')
 
-    _getloginOptionsElement().classList.add('hidden')
-    _getloginOptionsElement().classList.remove('flex')
+    _getloginOptionsElement().classList.add('flex')
+    _getloginOptionsElement().classList.remove('hidden')
+  }
+
+  /**
+   * @type {HTMLFormElement} event
+   */
+  async function studentLogin(event) {
+    event.preventDefault()
+
+    const data = new FormData(event.target)
+
+    const response = await fetch(
+        '/api/student/login', 
+        {
+          method: 'POST', 
+          body: JSON.stringify({
+            student_cpf: data.get('student_cpf_input'),
+            student_password: data.get('student_cpf_password')
+          })
+        }
+      )
+    
+    const responseJson = await response.json()
   }
 </script>
 
@@ -85,8 +107,9 @@
     </span>
   </header>
 
-  <main class="p-8 justify-center sm:justify-start sm:p-12 flex">
-    <article class="flex flex-col gap-2 sm:gap-6 justify-center" id="login-options">
+  <main class="p-8 justify-center sm:justify-start flex w-full">
+    <%!-- Login options --%>
+    <article class="flex flex-col gap-2 sm:gap-4 justify-center" id="login-options">
       <h1 class="font-bold text-2xl sm:text-3xl">
         Escolha seu tipo de <strong class="text-ni-blue">usuário</strong>:
       </h1>
@@ -95,7 +118,7 @@
         <li>
           <.button
             class="bg-ni-blue text-ni-white w-full md:w-fit"
-            onclick="openLoginForm(usersTypes.student)"
+            onclick="openLoginForm(userTypes.student)"
           >
             Aluno <.icon class="text-ni-white" name="hero-academic-cap" />
           </.button>
@@ -104,7 +127,7 @@
         <li>
           <.button
             class="bg-ni-blue text-ni-white w-full md:w-fit"
-            onclick="openLoginForm(usersTypes.egress)"
+            onclick="openLoginForm(userTypes.egress)"
           >
             Egresso <.icon class="text-ni-white" name="hero-arrow-left-start-on-rectangle" />
           </.button>
@@ -113,7 +136,7 @@
         <li>
           <.button
             class="bg-ni-blue text-ni-white w-full md:w-fit"
-            onclick="openLoginForm(usersTypes.enterprise)"
+            onclick="openLoginForm(userTypes.enterprise)"
           >
             Empresa <.icon class="text-ni-white" name="hero-building-office" />
           </.button>
@@ -122,13 +145,50 @@
         <li>
           <.button
             class="bg-ni-blue text-ni-white w-full md:w-fit"
-            onclick="openLoginForm(usersTypes.admin)"
+            onclick="openLoginForm(userTypes.admin)"
           >
             Administrador <.icon class="text-ni-white" name="hero-briefcase" />
           </.button>
         </li>
       </menu>
     </article>
+
+    <%!-- Student login --%>
+    <.login_form_template
+      user_type="student"
+      onsubmit="event.preventDefault(); studentLogin(event);"
+    >
+      <h1 class="text-center text-lg">
+        Entre como <strong class="text-ni-blue">aluno</strong>:
+      </h1>
+
+      <label class="w-full mt-2 font-bold" for="student-cpf-input">
+        CPF* <br />
+        <.input
+          class="font-medium w-full"
+          required
+          name="student_cpf_input"
+          type="text"
+          id="student-cpf-input"
+          phx_hook="cpf-input"
+        />
+      </label>
+
+      <label class="w-full font-bold" for="student-password-input">
+        Senha* <br />
+        <.input
+          class="font-medium w-full"
+          required
+          name="student_password_input"
+          type="password"
+          id="student-password-input"
+        />
+      </label>
+
+      <.button type="submit" class="bg-ni-black text-ni-white mt-6">
+        Entrar
+      </.button>
+    </.login_form_template>
   </main>
 
   <.footer />
@@ -139,17 +199,3 @@
   src="/images/backgrounds/blue_shape.svg"
   alt=""
 />
-
-<main>
-  <article class="hidden gap-2" id="student-login-form">
-    <form class="bg-ni-white p-2 rounded-xl" action="">
-      <label for="student-cpf">
-        CPF <input type="text" id="student-cpf-input" phx-hook="cpf-input" />
-      </label>
-    </form>
-
-    <.button class="bg-ni-black text-ni-white !p-2 !h-fit !w-fit">
-      <.icon name="hero-x-mark" />
-    </.button>
-  </article>
-</main>

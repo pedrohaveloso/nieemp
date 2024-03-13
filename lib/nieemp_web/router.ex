@@ -21,10 +21,13 @@ defmodule NieempWeb.Router do
     get "/login", PageController, :login
   end
 
-  # Other scopes may use custom stacks.
-  # scope "/api", NieempWeb do
-  #   pipe_through :api
-  # end
+  scope "/api", NieempWeb do
+    pipe_through :api
+
+    scope "/student" do
+      post "/login", StudentController, :login
+    end
+  end
 
   # Enable LiveDashboard and Swoosh mailbox preview in development
   if Application.compile_env(:nieemp, :dev_routes) do

@@ -6,13 +6,14 @@ defmodule NieempWeb.ButtonComponents do
   use Phoenix.Component
 
   @doc """
-  Renders a default primary button application.
+  Renders a default button application.
+  Customize with TailwindCSS.
 
   ## Examples
 
-      <.primary_button class="bg-blue-900" onclick="jsFunction()">
+      <.button class="bg-blue-900" onclick="jsFunction()">
         Click me
-      </.primary_button>
+      </.button>
   """
   attr :class, :string, default: nil
   attr :onclick, :string, default: nil

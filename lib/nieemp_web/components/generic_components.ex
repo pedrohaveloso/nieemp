@@ -1,6 +1,6 @@
-defmodule NieempWeb.CoreComponents do
+defmodule NieempWeb.GenericComponents do
   @moduledoc """
-  Provides core UI components.
+  Provides generic UI components.
 
   Icons are provided by [heroicons](https://heroicons.com). See `icon/1` for usage.
   """
@@ -81,6 +81,39 @@ defmodule NieempWeb.CoreComponents do
         </a>
       </address>
     </footer>
+    """
+  end
+
+  @doc """
+  Provides a login form template to login page.
+
+  ## Examples
+
+      <.login_form_template>
+
+      <./login_form_template>
+  """
+  attr :user_type, :string
+  attr :onsubmit, :string
+  slot :inner_block, required: true
+
+  def login_form_template(assigns) do
+    ~H"""
+    <article class="hidden gap-2 lg:w-1/2 justify-center" id={"#{@user_type}-login-form"}>
+      <NieempWeb.ButtonComponents.button
+        class="bg-ni-black border-2 border-ni-black text-ni-white !p-2 !h-fit !w-fit"
+        onclick={"closeLoginForm('#{@user_type}')"}
+      >
+        <.icon class="text-ni-white" name="hero-x-mark" />
+      </NieempWeb.ButtonComponents.button>
+
+      <form
+        class="border-2 border-ni-black p-6 gap-3 rounded-3xl flex flex-col sm:min-w-[400px]"
+        onsubmit={@onsubmit}
+      >
+        <%= render_slot(@inner_block) %>
+      </form>
+    </article>
     """
   end
 end

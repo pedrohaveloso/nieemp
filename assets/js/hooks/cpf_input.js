@@ -22,7 +22,6 @@ import { countChar } from "../utils/count_char"
 export const cpfInputHook = {
   mounted() {
     this.el.inputMode = "numeric"
-    this.el.pattern = "[0-9]"
     this.el.maxLength = "14"
 
     this.el.oninput = function (event) {
