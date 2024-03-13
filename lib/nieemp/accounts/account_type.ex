@@ -3,14 +3,13 @@ defmodule Nieemp.Accounts.AccountType do
   import Ecto.Changeset
 
   schema "account_types" do
-    field :account_type_id, :integer
-    field :account_type_key, :string
+    field :key, :string
   end
 
   @doc false
   def changeset(account_type, attrs) do
     account_type
-    |> cast(attrs, [:account_type_key])
-    |> validate_required([:account_type_key])
+    |> cast(attrs, [:key])
+    |> validate_required([:key])
   end
 end
