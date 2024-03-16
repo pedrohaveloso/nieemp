@@ -11,12 +11,11 @@
 # and so on) as they will fail if something goes wrong.
 
 alias Nieemp.Repo
-alias Nieemp.Accounts
 alias Nieemp.Accounts.AccountType
 
 Repo.delete_all(AccountType)
 
-Accounts.create_account_type(%{key: "student"})
-Accounts.create_account_type(%{key: "egress"})
-Accounts.create_account_type(%{key: "enterprise"})
-Accounts.create_account_type(%{key: "admin"})
+Repo.insert!(%AccountType{key: "student"})
+Repo.insert!(%AccountType{key: "egress"})
+Repo.insert!(%AccountType{key: "enterprise"})
+Repo.insert!(%AccountType{key: "admin"})
