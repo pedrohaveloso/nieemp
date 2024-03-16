@@ -58,7 +58,7 @@ defmodule Nieemp.Accounts do
   ## Examples
 
       iex> update_account_type(account_type, %{key: value})
-      {:ok, %Car{}}
+      {:ok, %AccountType{}}
 
       iex> update_account_type(account_type, %{key: bad_value})
       {:error, %Ecto.Changeset{}}

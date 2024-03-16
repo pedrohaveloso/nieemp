@@ -4,6 +4,8 @@ defmodule Nieemp.Accounts.AccountType do
 
   schema "account_types" do
     field :key, :string
+
+    timestamps()
   end
 
   @doc false
