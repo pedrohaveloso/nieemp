@@ -8,8 +8,11 @@ import { LiveSocket } from "phoenix_live_view"
 // Progress bar
 import topbar from "../vendor/topbar"
 
+// On load function
+import { onLoad } from "./on_load"
+
 // Import hooks
-import { cpfInputHook } from "./hooks/cpf_input"
+import { cpfInputHook } from "./hooks/cpf_input_hook"
 
 // Hooks
 const hooks = {
@@ -42,3 +45,4 @@ liveSocket.connect()
 // >> liveSocket.disableLatencySim()
 window.liveSocket = liveSocket
 
+window.onload = () => onLoad()
