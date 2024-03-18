@@ -83,12 +83,14 @@ defmodule NieempWeb do
     quote do
       # HTML escaping functionality
       import Phoenix.HTML
-      # Core UI components and translation
+
+      # Translation
       import NieempWeb.Gettext
+
       # UI components
-      import NieempWeb.GenericComponents
-      import NieempWeb.ButtonComponents
-      import NieempWeb.InputComponents
+      import NieempWeb.Components.GenericComponents
+      import NieempWeb.Components.ButtonComponents
+      import NieempWeb.Components.InputComponents
 
       # Shortcut for generating JS commands
       alias Phoenix.LiveView.JS

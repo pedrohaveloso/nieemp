@@ -1,4 +1,4 @@
-defmodule NieempWeb.ButtonComponents do
+defmodule NieempWeb.Components.ButtonComponents do
   @moduledoc """
   Provides buttons UI components.
   """
@@ -11,12 +11,12 @@ defmodule NieempWeb.ButtonComponents do
 
   ## Examples
 
-      <.button class="bg-blue-900" onclick="jsFunction()">
+      <.button class="bg-blue-900" click="phx-click" jsclick="jsFunction()">
         Click me
       </.button>
   """
   attr :class, :string, default: nil
-  attr :onclick, :string, default: nil
+  attr :click, :string, default: nil
   attr :type, :string, default: "button"
   slot :inner_block, required: true
 
@@ -28,7 +28,7 @@ defmodule NieempWeb.ButtonComponents do
         @class
       ]}
       type={@type}
-      onclick={@onclick}
+      phx-click={@click}
     >
       <%= render_slot(@inner_block) %>
     </button>

@@ -1,0 +1,129 @@
+<div id="login-page" class="min-h-screen flex flex-col justify-between">
+  <header class="flex flex-col sm:flex-row gap-4 items-center justify-between p-5 w-full bg-ni-white bg-opacity-80">
+    <span class="justify-center sm:justify-start flex gap-2 sm:gap-4 md:gap-6 h-full w-full">
+      <a href="/" class="w-fit h-full flex items-center justify-center">
+        <img
+          class="max-[350px]:h-8 h-12 lg:h-16 w-max hover:opacity-90 transition-all duration-500"
+          src="/images/logos/nieemp_dark_logo.svg"
+          alt="Nieemp"
+        />
+      </a>
+
+      <a
+        href="https://unimar.br/"
+        target="_blank"
+        class="w-fit h-full flex items-center justify-center"
+      >
+        <img
+          class="max-[350px]:h-8 h-10 lg:h-14 w-max hover:opacity-90 transition-all duration-500"
+          src="/images/logos/unimar_logo.svg"
+          alt="Unimar"
+        />
+      </a>
+    </span>
+
+    <span class="flex flex-col lg:flex-row gap-1 lg:gap-6 h-full w-full items-end lg:items-center justify-end">
+      <p class="font-medium hidden pr-2 sm:pl-0 sm:flex">Caso não tenha conta:</p>
+      <a class="w-full sm:w-fit flex justify-center" href="/register">
+        <.button class="bg-ni-black w-full sm:w-fit max-w-80 mx-3 sm:mx-0">
+          Registrar-se <.icon class="text-ni-white" name="hero-pencil-square" />
+        </.button>
+      </a>
+    </span>
+  </header>
+
+  <main class="p-4 sm:p-8 lg:p-16 justify-center sm:justify-start flex w-full">
+    <%= case @current_form do %>
+      <% nil -> %>
+        <%!-- Login options --%>
+        <article class="flex flex-col gap-2 sm:gap-4 justify-center" id="login-options">
+          <h1 class="font-bold text-2xl sm:text-3xl">
+            Para entrar, escolha seu tipo de <strong class="text-ni-blue">usuário</strong>:
+          </h1>
+
+          <menu class="flex flex-wrap gap-2 w-full flex-col sm:flex-row">
+            <li>
+              <.button class="bg-ni-blue text-ni-white w-full md:w-fit" click="form_open_student">
+                Aluno/Egresso <.icon class="text-ni-white" name="hero-academic-cap" />
+              </.button>
+            </li>
+
+            <li>
+              <.button class="bg-ni-blue text-ni-white w-full md:w-fit" click="form_open_company">
+                Empresa <.icon class="text-ni-white" name="hero-building-office" />
+              </.button>
+            </li>
+
+            <li>
+              <.button class="bg-ni-blue text-ni-white w-full md:w-fit" click="form_open_admin">
+                Administrador <.icon class="text-ni-white" name="hero-briefcase" />
+              </.button>
+            </li>
+          </menu>
+        </article>
+      <% "student" -> %>
+        <%!-- Student login --%>
+        <.login_form_template user_type="student">
+          <h1 class="text-center text-lg">
+            Entre como <strong class="text-ni-blue">aluno</strong> ou <strong>egresso</strong>:
+          </h1>
+
+          <.label_input
+            required
+            name="student_cpf_input"
+            type="text"
+            id="student-cpf-input"
+            phx_hook="cpf-input"
+          >
+            <.icon name="hero-user-solid" class="h-6 w-6 mb-2" /> CPF*
+          </.label_input>
+
+          <.label_input
+            required
+            name="student_password_input"
+            type="text"
+            id="student-password-input"
+          >
+            <.icon name="hero-lock-closed-solid" class="h-6 w-6 mb-2" /> Senha*
+          </.label_input>
+
+          <a class="underline hover:opacity-80 transition-all duration-500" href="#">
+            Esqueci minha senha
+          </a>
+
+          <.button type="submit" class="bg-ni-black text-ni-white mt-6">
+            Entrar
+          </.button>
+        </.login_form_template>
+      <% "company" -> %>
+        <%!-- Company login --%>
+        <.login_form_template user_type="company">
+          <h1 class="text-center text-lg">
+            Entre como <strong class="text-ni-blue">empresa</strong>:
+          </h1>
+
+          <label class="w-full font-bold" for="student-password-input">
+            E-mail* <br />
+            <.input
+              class="font-medium w-full"
+              required
+              name="student_password_input"
+              type="password"
+              id="student-password-input"
+            />
+          </label>
+        </.login_form_template>
+      <% "admin" -> %>
+        <%!-- Admin login --%>
+        <.login_form_template user_type="admin"></.login_form_template>
+    <% end %>
+  </main>
+
+  <.footer />
+</div>
+
+<img
+  class="opacity-10 sm:opacity-20 md:opacity-30 2xl:opacity-100 h-screen fixed top-0 right-0 -z-10"
+  src="/images/backgrounds/blue_shape.svg"
+  alt=""
+/>

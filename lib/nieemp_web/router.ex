@@ -17,8 +17,8 @@ defmodule NieempWeb.Router do
   scope "/", NieempWeb do
     pipe_through :browser
 
-    get "/", PageController, :home
-    get "/login", PageController, :login
+    live "/", Lives.Home
+    live "/login", Lives.Login
   end
 
   scope "/api", NieempWeb do
