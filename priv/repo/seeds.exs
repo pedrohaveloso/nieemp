@@ -17,5 +17,5 @@ Repo.delete_all(AccountType)
 
 Repo.insert!(%AccountType{key: "student"})
 Repo.insert!(%AccountType{key: "egress"})
-Repo.insert!(%AccountType{key: "enterprise"})
+Repo.insert!(%AccountType{key: "company"})
 Repo.insert!(%AccountType{key: "admin"})
