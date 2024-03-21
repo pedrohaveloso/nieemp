@@ -5,6 +5,10 @@ defmodule NieempWeb.Lives.Login do
     {:ok, assign(socket, :current_form, nil)}
   end
 
+  def handle_event("save", unsigned_params, socket) do
+
+  end
+
   # Open and close forms:
 
   def handle_event("form_open_" <> user_type, _, socket) do
@@ -30,7 +34,10 @@ defmodule NieempWeb.Lives.Login do
 
   def login_form_template(assigns) do
     ~H"""
-    <article class="flex flex-col sm:flex-row gap-2 justify-center" id={"#{@user_type}-form"}>
+    <article
+      class="w-fit flex flex-col pl-4 sm:flex-row gap-2 justify-center"
+      id={"#{@user_type}-form"}
+    >
       <NieempWeb.Components.ButtonComponents.button
         class="bg-ni-black border-2 border-ni-black text-ni-white !p-2 !h-fit !w-fit"
         click="form_close"
@@ -40,7 +47,7 @@ defmodule NieempWeb.Lives.Login do
 
       <form
         class="border-2 border-ni-black p-6 gap-3 rounded-3xl flex flex-col sm:min-w-[400px]"
-        phx-submit={@submit}
+        phx-submit={}
       >
         <%= render_slot(@inner_block) %>
       </form>

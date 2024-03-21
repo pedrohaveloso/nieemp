@@ -53,6 +53,7 @@ defmodule NieempWeb.Components.InputComponents do
   attr :id, :string, default: nil
   attr :phx_hook, :string, default: nil
   attr :required, :boolean, default: false
+  attr :field, :string, default: nil
   slot :inner_block, required: true
 
   def label_input(assigns) do
@@ -64,6 +65,7 @@ defmodule NieempWeb.Components.InputComponents do
 
       <.input
         required={@required}
+        field={@field}
         id={@id}
         class="font-medium w-full text-ni-black px-4 py-2 rounded-xl focus:border-ni-blue border-ni-black"
         type={@type}

@@ -32,30 +32,39 @@
     </span>
   </header>
 
-  <main class="p-4 sm:p-8 lg:p-16 justify-center sm:justify-start flex w-full">
+  <main class="p-4 sm:p-8 justify-center sm:justify-start flex">
     <%= case @current_form do %>
       <% nil -> %>
         <%!-- Login options --%>
-        <article class="flex flex-col gap-2 sm:gap-4 justify-center" id="login-options">
-          <h1 class="font-bold text-2xl sm:text-3xl">
+        <article class="flex flex-col gap-4 justify-center" id="login-options">
+          <h1 class="font-medium sm:font-bold text-1xl sm:text-3xl">
             Para entrar, escolha seu tipo de <strong class="text-ni-blue">usuário</strong>:
           </h1>
 
           <menu class="flex flex-wrap gap-2 w-full flex-col sm:flex-row">
-            <li>
-              <.button class="bg-ni-blue text-ni-white w-full md:w-fit" click="form_open_student">
+            <li class="flex justify-center">
+              <.button
+                class="bg-ni-blue text-ni-white w-full max-w-80 md:w-fit"
+                click="form_open_student"
+              >
                 Aluno/Egresso <.icon class="text-ni-white" name="hero-academic-cap" />
               </.button>
             </li>
 
-            <li>
-              <.button class="bg-ni-blue text-ni-white w-full md:w-fit" click="form_open_company">
+            <li class="flex justify-center">
+              <.button
+                class="bg-ni-blue text-ni-white w-full max-w-80 md:w-fit"
+                click="form_open_company"
+              >
                 Empresa <.icon class="text-ni-white" name="hero-building-office" />
               </.button>
             </li>
 
-            <li>
-              <.button class="bg-ni-blue text-ni-white w-full md:w-fit" click="form_open_admin">
+            <li class="flex justify-center">
+              <.button
+                class="bg-ni-blue text-ni-white w-full max-w-80 md:w-fit"
+                click="form_open_admin"
+              >
                 Administrador <.icon class="text-ni-white" name="hero-briefcase" />
               </.button>
             </li>
@@ -102,20 +111,62 @@
             Entre como <strong class="text-ni-blue">empresa</strong>:
           </h1>
 
-          <label class="w-full font-bold" for="student-password-input">
-            E-mail* <br />
-            <.input
-              class="font-medium w-full"
-              required
-              name="student_password_input"
-              type="password"
-              id="student-password-input"
-            />
-          </label>
+          <.label_input required name="company_email_input" type="email" id="company-email-input">
+            <.icon name="hero-envelope-solid" class="h-6 w-6 mb-2" /> E-mail*
+          </.label_input>
+
+          <.label_input
+            required
+            name="company_password_input"
+            type="password"
+            id="company-password-input"
+          >
+            <.icon name="hero-lock-closed-solid" class="h-6 w-6 mb-2" /> Senha*
+          </.label_input>
+
+          <a class="underline hover:opacity-80 transition-all duration-500" href="#">
+            Esqueci minha senha
+          </a>
+
+          <.button type="submit" class="bg-ni-black text-ni-white mt-6">
+            Entrar
+          </.button>
         </.login_form_template>
       <% "admin" -> %>
         <%!-- Admin login --%>
-        <.login_form_template user_type="admin"></.login_form_template>
+        <.login_form_template user_type="admin">
+          <h1 class="text-center text-lg">
+            Entre como <strong class="text-ni-blue">administrador</strong>:
+          </h1>
+
+          <.label_input
+            required
+            field={@form[:username]}
+            name="admin_username_input"
+            type="text"
+            id="admin-username-input"
+          >
+            <.icon name="hero-user-solid" class="h-6 w-6 mb-2" /> Usuário*
+          </.label_input>
+
+          <.label_input
+            required
+            field={@form[:password]}
+            name="admin_password_input"
+            type="password"
+            id="admin-password-input"
+          >
+            <.icon name="hero-lock-closed-solid" class="h-6 w-6 mb-2" /> Senha*
+          </.label_input>
+
+          <a class="underline hover:opacity-80 transition-all duration-500" href="#">
+            Esqueci minha senha
+          </a>
+
+          <.button type="submit" class="bg-ni-black text-ni-white mt-6">
+            Entrar
+          </.button>
+        </.login_form_template>
     <% end %>
   </main>
 

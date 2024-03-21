@@ -16,7 +16,6 @@ defmodule Nieemp.Repo.Migrations.AddAccountsTable do
     end
 
     create unique_index(:accounts, [:email])
-    create unique_index(:accounts, [:account_type_uuid])
   end
 
   def down() do
