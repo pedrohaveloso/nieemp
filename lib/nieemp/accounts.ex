@@ -4,18 +4,15 @@ defmodule Nieemp.Accounts do
   """
 
   import Ecto.Query, warn: false
-  alias Nieemp.Repo
 
+  alias Nieemp.Repo
   alias Nieemp.Accounts.AccountType
+  alias Nieemp.Accounts.Account
+
+  # Account type.
 
   @doc """
   Returns the list of account types.
-
-  ## Examples
-
-      iex> list_account_types()
-      [%AccountType, ...]
-
   """
   def list_account_types(), do: Repo.all(AccountType)
 
@@ -23,28 +20,11 @@ defmodule Nieemp.Accounts do
   Gets a single account type.
 
   Raises `Ecto.NoResultsError` if the account type does not exist.
-
-  ## Examples
-
-      iex> get_account_type!(1)
-      %AccountType{}
-
-      iex> get_account_type!(100)
-      ** (Ecto.NoResultsError)
-
   """
   def get_account_type!(id), do: Repo.get!(AccountType, id)
 
   @doc """
   Creates a account type.
-
-  ## Examples
-
-      iex> create_account_type(%{key: value})
-      {:ok, %AccountType{}}
-
-      iex> create_account_type(%{key: bad_value})
-      {:error, %Ecto.Changeset{}}
   """
   def create_account_type(attrs \\ %{}) do
     %AccountType{}
@@ -54,15 +34,6 @@ defmodule Nieemp.Accounts do
 
   @doc """
   Updates a account type.
-
-  ## Examples
-
-      iex> update_account_type(account_type, %{key: value})
-      {:ok, %AccountType{}}
-
-      iex> update_account_type(account_type, %{key: bad_value})
-      {:error, %Ecto.Changeset{}}
-
   """
   def update_account_type(%AccountType{} = account_type, attrs) do
     account_type
@@ -72,17 +43,42 @@ defmodule Nieemp.Accounts do
 
   @doc """
   Deletes a account type.
-
-  ## Examples
-
-      iex> delete_account_type(account_type)
-      {:ok, %AccountType{}}
-
-      iex> delete_account_type(account_type)
-      {:error, %Ecto.Changeset{}}
-
   """
   def delete_account_type(%AccountType{} = account_type) do
     Repo.delete(account_type)
+  end
+
+  # Account.
+
+  @doc """
+  Gets a single account.
+
+  Raises `Ecto.NoResultsError` if the account does not exist.
+  """
+  def get_account!(uuid), do: Repo.get!(Account, uuid)
+
+  @doc """
+  Creates a account.
+  """
+  def create_account(attrs \\ %{}) do
+    %Account{}
+    |> Account.changeset(attrs)
+    |> Repo.insert()
+  end
+
+  @doc """
+  Updates a account.
+  """
+  def update_account(%Account{} = account, attrs) do
+    account
+    |> Account.changeset(attrs)
+    |> Repo.update()
+  end
+
+  @doc """
+  Deletes a account.
+  """
+  def delete_account(%Account{} = account) do
+    Repo.delete(account)
   end
 end
